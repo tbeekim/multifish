@@ -33,12 +33,7 @@ if __name__ == '__main__':
     
     print("predicting...")
     # the affinity based labels 
-    label_starfinity, res_dict = model.predict_instances(img_normed,
-                                                         n_tiles=n_tiles,
-                                                         affinity=True,
-                                                         affinity_thresh=0.1,
-                                                         verbose=True)
-
+    label_starfinity, res_dict = model.predict_instances_big(img_normed, block_size=(512,1024,1024),min_overlap=(96,96,96), affinity=True, affinity_thresh=0.1, n_tiles=n_tiles, candidate_grid=2, verbose=True)
     # the normal stardist labels are implicitly calculated and
     # can be accessed from the results dict
     label_stardist = res_dict["markers"]
